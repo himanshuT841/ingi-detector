@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ingredient Detector</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: #17231d;
+        background: #f3f6f1;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; }
+      main { width: min(100% - 32px, 980px); margin: 44px auto; }
+      header { margin-bottom: 24px; }
+      h1 { margin: 0 0 8px; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.05em; }
+      p { color: #57665d; line-height: 1.55; }
+      .card { padding: 24px; border: 1px solid #dfe7df; border-radius: 20px; background: #fff; box-shadow: 0 12px 32px #1d39210b; }
+      .status { margin: 0 0 18px; padding: 12px 14px; border-radius: 12px; background: #edf5ef; color: #265238; font-size: .95rem; }
+      .status.demo { background: #fff4dc; color: #76500a; }
+      .status.error { background: #fff0ef; color: #913830; }
+      .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; }
+      label { display: grid; gap: 7px; color: #536157; font-size: .9rem; }
+      input[type="file"] { max-width: 100%; }
+      input[type="range"] { width: 190px; accent-color: #297249; }
+      button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 11px; background: #267045; color: white; font: inherit; font-weight: 650; cursor: pointer; }
+      button:disabled { opacity: .48; cursor: not-allowed; }
+      .hint { margin: 12px 0 0; font-size: .85rem; }
+      .result { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr); gap: 24px; margin-top: 24px; }
+      .preview { width: 100%; min-height: 180px; border-radius: 14px; background: #f1f3f0; object-fit: contain; }
+      h2 { margin: 0 0 14px; font-size: 1.15rem; }
+      .ingredient { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #edf0ec; }
+      .ingredient strong { text-transform: capitalize; }
+      .muted { color: #748077; }
+      @media (max-width: 650px) {
+        main { margin: 24px auto; }
+        .card { padding: 18px; }
+        .result { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Ingredient Detector</h1>
+        <p>Upload a photo to see detected ingredient categories, confidence, and approximate counts.</p>
+      </header>
+      <section class="card">
+        <div id="status" class="status" role="status">Checking model…</div>
+        <form id="form">
+          <div class="controls">
+            <label>
+              Ingredient photo
+              <input id="image" type="file" accept="image/jpeg,image/png,image/webp,image/bmp" required>
+            </label>
+            <label>
+              Confidence: <span id="confidenceValue">0.25</span>
+              <input id="confidence" type="range" min="0.05" max="0.90" step="0.05" value="0.25">
+            </label>
+            <button id="submit" type="submit" disabled>Analyze photo</button>
+          </div>
+          <p class="hint">JPEG, PNG, WebP, or BMP; maximum 10 MB. Results are experimental and may miss or misidentify ingredients.</p>
+        </form>
+        <div id="result" class="result" hidden>
+          <div>
+            <h2>Annotated image</h2>
+            <img id="preview" class="preview" alt="Annotated ingredient detection result">
+          </div>
+          <div>
+            <h2>Ingredient set</h2>
+            <div id="ingredients"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const statusBox = document.querySelector("#status");
+      const submit = document.querySelector("#submit");
+      const confidence = document.querySelector("#confidence");
+      confidence.addEventListener("input", () => {
+        document.querySelector("#confidenceValue").textContent = Number(confidence.value).toFixed(2);
+      });
+
+      async function loadStatus() {
+        try {
+          const response = await fetch("/api/health");
+          const data = await response.json();
+          if (!data.available) {
+            statusBox.textContent = "No model checkpoint found. Train or set INGREDIENT_MODEL_PATH before testing.";
+            statusBox.classList.add("error");
+            return;
+          }
+          submit.disabled = false;
+          if (data.model_kind === "pretrained-demo") {
+            statusBox.textContent = `${data.warning} Uploads can test the demo only; this is not your trained ingredient detector.`;
+            statusBox.classList.add("demo");
+          } else if (data.model_kind === "trained-preview") {
+            statusBox.textContent = data.warning;
+            statusBox.classList.add("demo");
+          } else {
+            statusBox.textContent = `Loaded trained checkpoint: ${data.model}`;
+          }
+        } catch {
+          statusBox.textContent = "Could not connect to the local inference API.";
+          statusBox.classList.add("error");
+        }
+      }
+
+      document.querySelector("#form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const file = document.querySelector("#image").files[0];
+        if (!file) return;
+        if (file.size > 10 * 1024 * 1024) {
+          statusBox.textContent = "Choose an image smaller than 10 MB.";
+          statusBox.classList.add("error");
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = "Analyzing…";
+        statusBox.classList.remove("error");
+        statusBox.textContent = "Running detection…";
+        try {
+          const query = new URLSearchParams({ conf: confidence.value });
+          const response = await fetch(`/api/predict?${query}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": file.type || "application/octet-stream",
+              "X-Filename": encodeURIComponent(file.name)
+            },
+            body: file
+          });
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.detail || "Inference request failed.");
+          document.querySelector("#preview").src = payload.annotated_image;
+          const list = document.querySelector("#ingredients");
+          list.replaceChildren();
+          if (!payload.ingredients.length) {
+            const empty = document.createElement("p");
+            empty.className = "muted";
+            empty.textContent = "No supported ingredients detected at this confidence.";
+            list.append(empty);
+          }
+          for (const item of payload.ingredients) {
+            const row = document.createElement("div");
+            row.className = "ingredient";
+            const name = document.createElement("strong");
+            name.textContent = item.ingredient;
+            const details = document.createElement("span");
+            details.textContent = `×${item.count} · ${(item.confidence * 100).toFixed(1)}%`;
+            row.append(name, details);
+            list.append(row);
+          }
+          document.querySelector("#result").hidden = false;
+          statusBox.textContent = payload.warning || `Done · ${payload.model}`;
+          if (payload.model_kind === "pretrained-demo" || payload.model_kind === "trained-preview") {
+            statusBox.classList.add("demo");
+          }
+        } catch (error) {
+          statusBox.textContent = error.message;
+          statusBox.classList.add("error");
+        } finally {
+          submit.disabled = false;
+          submit.textContent = "Analyze photo";
+        }
+      });
+
+      loadStatus();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+datasets:
+  - workspace: deep-food-project
+    project: food-detection-3
+    version: 1
+    listing_images: 10000
+    observed_splits: {train: 7000, valid: 2000, test: 1000}
+    observed_augmentation: {}
+    observed_classes: [Zucchini, Carrot, Tomato, Pumpkin, Peach, Bell pepper, Mango, Cheese, Lemon, Orange, Potato, Cabbage, Strawberry, Apple, Grapefruit, Radish, Pomegranate, Pear, Mushroom, Broccoli, Cantaloupe, Banana, Grape, Artichoke, Common fig, Cucumber]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.577574965
+    expected_size_bytes: 577574965
+  - workspace: ece4078-ss3zf
+    project: ece4078-object-detection-fruits
+    version: 5
+    listing_images: 8860
+    observed_splits: {train: 8176, valid: 518, test: 166}
+    observed_augmentation: {image_versions: 3, brightness: true, horizontal_flip: true}
+    observed_classes: [lime, pumpkin, orange, tomato]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.259641414
+    expected_size_bytes: 259641414
+  - workspace: bohni-tech
+    project: fruits-and-vegi
+    version: 13
+    listing_images: 6805
+    observed_splits: {train: 6645, valid: 150, test: 10}
+    observed_augmentation: {image_versions: 3, brightness: true, crop: true}
+    observed_classes: [Carrot, Cherry, Peach, Coconut, Mango, Maize, Ginger, Bottle_Gourd, Tomato, Bitter_Gourd, Orange, Okra, Potato, Strawberry, Cauliflower, Pineapple, Radish, Chilli, Cabbage, Pomegranate, Beetroot, Green_Orange, Peas, Pear, Onion, Watermelon, Banana, Apple, Kiwi, EggPlant, Grape, Turnip, Capsicum, Cucumber, Melon]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.709892684
+    expected_size_bytes: 709892684
+  - workspace: neeraj-chidella
+    project: fruits-qhsig
+    version: 2
+    listing_images: 6233
+    observed_splits: {train: 6082, valid: 102, test: 49}
+    observed_augmentation: {image_versions: 3, rotations: true, horizontal_flip: true}
+    observed_classes: [fruit, Watermelon, Strawberry, Potato, Pomegranate, Pineapple, Orange, Mushroom, Mango, Grape, Carrot, Cabbage, Banana, Apple]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.192644562
+    expected_size_bytes: 192644562
+  - workspace: objectdetectionlearning-4empo
+    project: aicook-lcv4d-zzbgs
+    version:
+    listing_images: 516
+    version_status: requested v1 not found by API
+    observed_classes: [apple, spinach, chicken, shrimp, onion, corn, blueberries, beef, tomato, cheese, ground_beef, ham, flour, potato, strawberries, banana, goat_cheese, eggs, butter, bread, lime, milk, sweet_potato, green_beans, mushrooms, chicken_breast, heavy_cream, sugar, carrot, chocolate]
+    scene_type: fridge
+    license: MIT
+    expected_size_gb:
+  - workspace: fridgeitems
+    project: object-fridge-items
+    version:
+    listing_images: 7407
+    observed_classes: [spinach, onion, corn, blueberries, beef, sausage, sauce, Tomato, Orange, Lemon, cheese, Potato, ground_beef, ham, olive, flour, Strawberry, strawberries, spring onion, mushroom, banana, eggs, Peas, Onion, milk, peach, sweet_potato, green_beans, cream, dates, lettuce, green bell pepper, Banana, Broccoli, labneh, ginger, yoghurt, asparagus, heavy_cream, sugar, apples, aubergine, chocolate, chicken, creme fraiche, shrimp, potatoes, mineral water, cream cheese, broccoli, bananas, tomato, green beans, red onion, apple, tomatoes, lemon, parsley, yellow bell pepper, potato, tomato paste, Shallot, Cauliflower, salami, carrots, courgettes, goat_cheese, Beetroot, butter, bread, peppers, Sweetcorn, chocolate chips, lime, strawberry, juice, lemons, mango, mushrooms, orange, bacon, olives, chicken_breast, bazlama, red bell pepper, meat, green chilies, carrot]
+    scene_type: fridge
+    license: CC BY 4.0
+    expected_size_gb: 0.332819071
+    expected_size_bytes: 332819071
+  - workspace: ai-workspace-q8pyt
+    project: fridge-fine-tune
+    version:
+    listing_images:
+    observed_classes: [kiwi, chicken, spinach, cabbage, salad, egg, cucumber, onion, bottles, broccoli, curd, sauce, tomato, cheese, apple, lemon, raddish, burger, potato, jelly, watermelon, mushroom, chilli, banana, fruits-vegetable-egg-bread, garlic, brinjal, capsicum, milk, avacado, strawberry, grape, juice, mango, orange, corriander, water bottle, pineapple, olives, fish, meat, wine, carrot]
+    scene_type: fridge
+    license: to verify
+    expected_size_gb:
+  - workspace: project-yijmw
+    project: vegetables_obj_det-r78fa
+    version: 2
+    listing_images: 150
+    observed_classes: [1, 2, 3, 4, 5, 6, 7, 8, papaya, cauliflower, bottle_gourd, cabbage, bitter_gourd, brinjal, capsicum, radish, broccoli, tomato, potato, pumpkin, bean, carrot]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.00740575
+    expected_size_bytes: 7405750
+  - workspace: vegetable-object-detection
+    project: vegetables-kacga-lvr1d
+    version: 1
+    listing_images: 2884
+    observed_classes: [rediska, cabbage, salad, cucumber, corn, onion, broccoli, tomato, cayliflower, redka, bell pepper, vegetable marrow, celery, peas, potato, brus capusta, beans, beet, eggplant, squash/patisson, garlic, hot pepper, avocado, pumpkin, fasol, carrot]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.032870185
+    expected_size_bytes: 32870185
+  - workspace: fruiiiiit
+    project: fruits-hriyf
+    version: 2
+    listing_images: 13284
+    license: CC BY 4.0
+    version_status: project page lists dataset version 2; version image count to verify
+    observed_classes: [banana, lemon, peach, grapes, strawberry, watermelon, pear, orange, apple]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb: 0.837247969
+    expected_size_bytes: 837247969
+  - workspace: merlams24
+    project: fruits-zr4m9
+    version: 3
+    listing_images: 7357
+    observed_splits: {train: 5150, valid: 1473, test: 734}
+    observed_augmentation: {}
+    observed_classes: [Guava, Papaya, Watermelon, Mango, Rambutan, Pomelo, Orange, Lemon, Tambis, Banana, Apple, Star Fruit, Jackfruit, Durian, Tomatoes, Santol, Pomegranate]
+    scene_type: to verify
+    license: CC BY 4.0
+    expected_size_gb:

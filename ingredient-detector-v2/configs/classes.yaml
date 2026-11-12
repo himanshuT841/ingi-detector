@@ -1,0 +1,293 @@
+classes:
+  - name: onion
+    group: vegetable
+    synonyms: [onions, red onion]
+  - name: tomato
+    group: vegetable
+    synonyms: [tomatoes]
+  - name: potato
+    group: vegetable
+    synonyms: [potatoes]
+  - name: carrot
+    group: vegetable
+    synonyms: [carrots]
+  - name: green_chilli
+    group: vegetable
+    synonyms: [green chili, green chillies, green chilies, green chiles]
+  - name: lemon
+    group: fruit
+    synonyms: [lemons]
+  - name: cucumber
+    group: vegetable
+    synonyms: [cucumbers]
+  - name: ginger
+    group: vegetable
+    synonyms: [ginger root]
+  - name: garlic
+    group: vegetable
+    synonyms: [garlic bulb, garlic cloves]
+  - name: egg
+    group: protein
+    synonyms: [eggs]
+  - name: capsicum
+    group: vegetable
+    synonyms:
+      [bell pepper, bell peppers, sweet pepper, green bell pepper, yellow bell pepper, red bell pepper]
+  - name: brinjal
+    group: vegetable
+    synonyms: [eggplant, aubergine]
+  - name: cabbage
+    group: vegetable
+    synonyms: [cabbages]
+  - name: cauliflower
+    group: vegetable
+    synonyms: [cauliflowers, cayliflower]
+  - name: okra
+    group: vegetable
+    synonyms: [okra pod, lady's finger]
+  - name: spinach
+    group: leafy_green
+    synonyms: [spinach leaves]
+  - name: coriander
+    group: herb
+    synonyms: [cilantro, fresh coriander, corriander]
+  - name: peas
+    group: legume
+    synonyms: [green peas, garden peas]
+  - name: banana
+    group: fruit
+    synonyms: [bananas]
+  - name: apple
+    group: fruit
+    synonyms: [apples]
+  - name: lime
+    group: fruit
+    synonyms: [limes]
+  - name: orange
+    group: fruit
+    synonyms: [oranges, green orange]
+  - name: mango
+    group: fruit
+    synonyms: [mangoes]
+  - name: grapes
+    group: fruit
+    synonyms: [grape, red grapes]
+  - name: papaya
+    group: fruit
+    synonyms: [papayas]
+  - name: watermelon
+    group: fruit
+    synonyms: [watermelons]
+  - name: pumpkin
+    group: vegetable
+    synonyms: [pumpkins]
+  - name: radish
+    group: vegetable
+    synonyms: [radishes, redka, rediska, raddish]
+  - name: beetroot
+    group: vegetable
+    synonyms: [beet, beets]
+  - name: broccoli
+    group: vegetable
+    synonyms: [broccoli florets]
+  - name: lettuce
+    group: leafy_green
+    synonyms: [lettuce leaves]
+  - name: sweet_corn
+    group: vegetable
+    synonyms: [sweet corn, sweetcorn]
+  - name: green_beans
+    group: legume
+    synonyms: [green bean, green beans, string beans, snap beans]
+  - name: shallot
+    group: vegetable
+    synonyms: [shallots, eschalot]
+  - name: pineapple
+    group: fruit
+    synonyms: [pineapples]
+  - name: avocado
+    group: fruit
+    synonyms: [avocados, avacado]
+  - name: sweet_potato
+    group: vegetable
+    synonyms: [sweet potatoes]
+  - name: squash
+    group: vegetable
+    synonyms: [pattypan, patisson, squash patisson]
+  - name: mushroom
+    group: fungus
+    synonyms: [mushrooms]
+  - name: mint
+    group: herb
+    synonyms: [mint leaves]
+  - name: leek
+    group: vegetable
+    synonyms: [leeks]
+  - name: celery
+    group: vegetable
+    synonyms: [celery stalk]
+  - name: zucchini
+    group: vegetable
+    synonyms: [courgette, courgettes, vegetable marrow]
+  - name: asparagus
+    group: vegetable
+    synonyms: [asparagus spears]
+  - name: brussels_sprout
+    group: vegetable
+    synonyms: [brussels sprouts, brus capusta]
+  - name: kale
+    group: leafy_green
+    synonyms: [kale leaves]
+  - name: bok_choy
+    group: leafy_green
+    synonyms: [pak choi, pak choy, bok choi]
+  - name: arugula
+    group: leafy_green
+    synonyms: [rocket leaves, rocket]
+  - name: turnip
+    group: vegetable
+    synonyms: [turnips]
+  - name: parsnip
+    group: vegetable
+    synonyms: [parsnips]
+  - name: yam
+    group: vegetable
+    synonyms: [yams]
+  - name: taro
+    group: vegetable
+    synonyms: [taro root]
+  - name: fennel
+    group: vegetable
+    synonyms: [fennel bulb]
+  - name: bitter_gourd
+    group: vegetable
+    synonyms: [bitter melon, bitter gourds, karela]
+  - name: bottle_gourd
+    group: vegetable
+    synonyms: [calabash, lauki]
+  - name: ridge_gourd
+    group: vegetable
+    synonyms: [luffa, turai]
+  - name: moringa_pod
+    group: vegetable
+    synonyms: [drumstick, drumstick pod]
+  - name: red_chilli
+    group: vegetable
+    synonyms: [red chili, red chillies, red chiles]
+  - name: chilli
+    group: vegetable
+    synonyms: [chili, chilies, chilis, hot pepper]
+  - name: corn
+    group: vegetable
+    synonyms: [maize]
+  - name: grapefruit
+    group: fruit
+    synonyms: [grapefruits]
+  - name: artichoke
+    group: vegetable
+    synonyms: [artichokes]
+  - name: rambutan
+    group: fruit
+    synonyms: [rambutans]
+  - name: pomelo
+    group: fruit
+    synonyms: [pomelos]
+  - name: tambis
+    group: fruit
+    synonyms: []
+  - name: santol
+    group: fruit
+    synonyms: [cotton fruit]
+  - name: olive
+    group: fruit
+    synonyms: [olives]
+  - name: spring_onion
+    group: vegetable
+    synonyms: [spring onion, scallion, green onion]
+  - name: parsley
+    group: herb
+    synonyms: [parsley leaves]
+  - name: pear
+    group: fruit
+    synonyms: [pears]
+  - name: peach
+    group: fruit
+    synonyms: [peaches]
+  - name: strawberry
+    group: fruit
+    synonyms: [strawberries]
+  - name: blueberry
+    group: fruit
+    synonyms: [blueberries]
+  - name: cherry
+    group: fruit
+    synonyms: [cherries]
+  - name: pomegranate
+    group: fruit
+    synonyms: [pomegranates]
+  - name: guava
+    group: fruit
+    synonyms: [guavas]
+  - name: kiwi
+    group: fruit
+    synonyms: [kiwifruit]
+  - name: coconut
+    group: fruit
+    synonyms: [coconuts]
+  - name: jackfruit
+    group: fruit
+    synonyms: [jackfruits]
+  - name: durian
+    group: fruit
+    synonyms: [durians]
+  - name: melon
+    group: fruit
+    synonyms: [cantaloupe, muskmelon, honeydew]
+  - name: plum
+    group: fruit
+    synonyms: [plums]
+  - name: dragonfruit
+    group: fruit
+    synonyms: [dragon fruit, pitaya]
+  - name: lychee
+    group: fruit
+    synonyms: [litchi, lychees]
+  - name: fig
+    group: fruit
+    synonyms: [figs, common fig]
+  - name: date
+    group: fruit
+    synonyms: [dates]
+  - name: passion_fruit
+    group: fruit
+    synonyms: [passion fruit]
+  - name: starfruit
+    group: fruit
+    synonyms: [star fruit, carambola]
+  - name: chicken
+    group: meat
+    synonyms: [chicken meat, chicken breast]
+  - name: beef
+    group: meat
+    synonyms: [beef meat, ground beef]
+  - name: pork
+    group: meat
+    synonyms: [pork meat]
+  - name: lamb
+    group: meat
+    synonyms: [lamb meat]
+  - name: goat_meat
+    group: meat
+    synonyms: [goat meat]
+  - name: fish
+    group: seafood
+    synonyms: [whole fish]
+  - name: shrimp
+    group: seafood
+    synonyms: [shrimp meat]
+  - name: prawn
+    group: seafood
+    synonyms: [prawn meat]
+  - name: other_food
+    group: other_food
+    synonyms: []

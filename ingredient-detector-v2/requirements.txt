@@ -1,0 +1,9 @@
+ultralytics
+opencv-python
+fastapi
+uvicorn
+pytest
+imagehash
+fiftyone
+roboflow
+PyYAML
